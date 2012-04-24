@@ -1,11 +1,11 @@
 %define major		0
-%define libname		%mklibname MateCORBA2 %{major}
+%define libname		%mklibname MateCORBA2_ %{major}
 %define develname	%mklibname MateCORBA2 -d
 
 Name:		mate-corba
 Summary:	MateCORBA is a fork of GNOME's Orbit
 Version:	1.2.2
-Release:	2
+Release:	3
 License:	GPLv3+
 Group:		Graphical desktop/Other
 URL:		http://www.mate-desktop.org
@@ -32,6 +32,7 @@ Summary:	MateCORBA is a fork of GNOME's Orbit
 Group:		Development/C
 Requires:	%{libname} = %{version}
 Requires:	%{name} = %{version}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{develname}
 MateCORBA is a fork of GNOME's Orbit.
