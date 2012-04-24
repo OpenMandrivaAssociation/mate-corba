@@ -5,7 +5,7 @@
 Name:		mate-corba
 Summary:	MateCORBA is a fork of GNOME's Orbit
 Version:	1.2.2
-Release:	1
+Release:	2
 License:	GPLv3+
 Group:		Graphical desktop/Other
 URL:		http://www.mate-desktop.org
@@ -40,6 +40,7 @@ MateCORBA is a fork of GNOME's Orbit.
 %setup -q
 
 %build
+%setup_compile_flags
 ./autogen.sh \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir} \
