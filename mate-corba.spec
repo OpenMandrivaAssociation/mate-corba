@@ -1,21 +1,22 @@
-%define major		0
-%define libname		%mklibname MateCORBA2_ %{major}
-%define develname	%mklibname MateCORBA2 -d
+%define major	0
+%define libname	%mklibname MateCORBA2_ %{major}
+%define devname	%mklibname MateCORBA2 -d
 
-Name:		mate-corba
 Summary:	MateCORBA is a fork of GNOME's Orbit
-Version:	1.2.2
-Release:	4
+Name:		mate-corba
+Version:	1.4.0
+Release:	1
 License:	GPLv3+
 Group:		Graphical desktop/Other
 URL:		http://www.mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/1.2/%{name}-%{version}.tar.xz
+Source0:	http://pub.mate-desktop.org/releases/1.4/%{name}-%{version}.tar.xz
+
+BuildRequires:	gtk-doc
+BuildRequires:	mate-common
 BuildRequires:	pkgconfig(gobject-2.0)
 BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gmodule-2.0)
 BuildRequires:	pkgconfig(libIDL-2.0)
-BuildRequires:	mate-common
-BuildRequires:	gtk-doc >= 1.0
 
 %description
 MateCORBA is a fork of GNOME's Orbit.
@@ -28,25 +29,24 @@ Obsoletes:	%{_lib}MateCORBA20 <= %{EVRD}
 %description -n %{libname}
 MateCORBA is a fork of GNOME's Orbit.
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	MateCORBA is a fork of GNOME's Orbit
 Group:		Development/C
 Requires:	%{libname} = %{version}
 Requires:	%{name} = %{version}
 Provides:	%{name}-devel = %{EVRD}
 
-%description -n %{develname}
+%description -n %{devname}
 MateCORBA is a fork of GNOME's Orbit.
 
 %prep
 %setup -q
 
 %build
-%setup_compile_flags
-./autogen.sh \
-	--prefix=%{_prefix} \
-	--libdir=%{_libdir} \
+NOCONFIGURE=yes ./autogen.sh
+%configure2_5x \
 	--disable-static
+
 %make
 
 %install
@@ -62,12 +62,12 @@ MateCORBA is a fork of GNOME's Orbit.
 %{_bindir}/matecorba-typelib-dump
 %{_libdir}/matecorba-2.0/Everything_module.so
 %{_datadir}/idl/matecorba-2.0/
-%doc AUTHORS NEWS README TODO
 
 %files -n %{libname}
 %{_libdir}/libMateCORBA*.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
+%doc AUTHORS NEWS README TODO
 %{_includedir}/matecorba-2.0/
 %{_libdir}/libMateCORBA*.so
 %{_libdir}/libname-matecorba-server-2.a
@@ -78,4 +78,4 @@ MateCORBA is a fork of GNOME's Orbit.
 %{_datadir}/gtk-doc/html/MateCORBA2/
 %{multiarch_bindir}/matecorba2-config
 %{multiarch_includedir}/matecorba-2.0/
-%doc AUTHORS NEWS README TODO
+
