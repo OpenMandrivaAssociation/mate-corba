@@ -79,3 +79,26 @@ NOCONFIGURE=yes ./autogen.sh
 %{multiarch_bindir}/matecorba2-config
 %{multiarch_includedir}/matecorba-2.0/
 
+
+
+%changelog
+* Fri Jul 27 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.4.0-1
++ Revision: 811312
+- new version 1.4.0
+
+* Sat Jun 09 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 1.2.2-4
++ Revision: 804071
+- obsolete wrong named library package
+
+* Tue Apr 24 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 1.2.2-3
++ Revision: 793099
+- fix lib package name and devel package provides
+
+* Tue Apr 24 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 1.2.2-2
++ Revision: 793094
+- fix compile flags
+
+* Mon Apr 23 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 1.2.2-1
++ Revision: 793013
+- imported package mate-corba
+
